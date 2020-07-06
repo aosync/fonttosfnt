@@ -1,3 +1,6 @@
+Dependencies: freetype2 libfontenc zlib
+
+
 fonttosfnt wraps a set of bdf or pcf bitmap fonts in a sfnt (TrueType or
 OpenType) wrapper.
 
