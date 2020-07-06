@@ -19,9 +19,6 @@
 #  TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 #  PERFORMANCE OF THIS SOFTWARE.
 
-SUBDIRS = man
-bin_PROGRAMS = fonttosfnt
-
 libs = $(shell pkg-config --cflags --libs freetype2 zlib fontenc)
 
 AM_CFLAGS = -DXVENDORNAME=\"X.Org\ Foundation\" -DXVENDORNAMESHORT=\"X.Org\" -D_DEFAULT_SOURCE -D_GNU_SOURCE -fcommon
@@ -34,5 +31,8 @@ fonttosfnt_SOURCES = \
         util.c \
         write.c
 
-ALL:
-	$(CC) -o fonttosfnt $(fonttosfnt_SOURCES) -lm $(libs)
+fonttosfnt:
+	$(CC) $(fonttosfnt_SOURCES) -lm $(libs)
+	mv a.out fonttosfnt
+
+ALL: fonttosfnt
